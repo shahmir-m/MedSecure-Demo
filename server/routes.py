@@ -35,5 +35,5 @@ def index():
 @flaskapp.route('/lookup')
 def lookup():
     hostname = request.args.get('hostname', '')
-    output = subprocess.check_output(f"nslookup {hostname}", shell=True)
+    output = subprocess.check_output(["nslookup", hostname])
     return output
