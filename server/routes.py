@@ -1,4 +1,6 @@
 
+import subprocess
+
 from flask import request, render_template, make_response
 
 from server.webapp import flaskapp, cursor
@@ -28,3 +30,10 @@ def index():
         books = [Book(*row) for row in cursor]
 
     return render_template('books.html', books=books)
+
+
+@flaskapp.route('/lookup')
+def lookup():
+    hostname = request.args.get('hostname', '')
+    output = subprocess.check_output(f"nslookup {hostname}", shell=True)
+    return output
