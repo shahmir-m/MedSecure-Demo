@@ -7,6 +7,8 @@ on:
   # Allow manual trigger
   workflow_dispatch:
 
+permissions: {}
+
 jobs:
   dispatch-to-devin:
     name: Dispatch CodeQL Findings to Devin
